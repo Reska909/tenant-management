@@ -29,11 +29,7 @@ Route::get('/dashboard', [DashboardController::class,'index'])
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
 
-Route::get('/users/{user}', [UserController::class, 'show'])
-    ->name('users.show');
 
-Route::put('/users/{user}', [UserController::class, 'update'])
-    ->name('users.update');
 
 Route::put(
     '/users/{user}/password',
