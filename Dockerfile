@@ -1,24 +1,38 @@
 FROM php:8.4-cli
 
-# Install dependencies
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    git unzip curl zip libzip-dev libpng-dev libonig-dev libxml2-dev \
-    nodejs npm \
+    git \
+    unzip \
+    zip \
+    curl \
+    libzip-dev \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    nodejs \
+    npm \
     && docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-WORKDIR /app
+WORKDIR /var/www/html
 
+# Copy project
 COPY . .
 
+# Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
+# Install Node dependencies
 RUN npm install
+
+# Build Vite assets
 RUN npm run build
 
-RUN php artisan config:clear
+# Laravel optimization
+RUN php artisan optimize
 
 EXPOSE 8080
 
