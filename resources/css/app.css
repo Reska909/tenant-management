@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+@import "flatpickr/dist/flatpickr.min.css";
+@import "sweetalert2/dist/sweetalert2.min.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:#f5f7fb;
+
+}
+
+/* ===========================
+   TABLE GLOBAL
+=========================== */
+
+table{
+    border-collapse: collapse;
+    width:100%;
+}
+
+th,
+td{
+    vertical-align: middle;
+}
+
+th{
+    text-align:center;
+    font-weight:600;
+}
+
+tbody td{
+    padding:16px;
+}
+
+/* =========================================================
+   GLOBAL ANIMATION
+========================================================= */
+
+@keyframes fadeUp {
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes fadeLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes zoomIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+.fade-up{
+
+    animation:fadeUp .6s ease forwards;
+
+}
+
+.fade-left{
+
+    animation:fadeLeft .5s ease forwards;
+
+}
+
+.zoom-in{
+
+    animation:zoomIn .4s ease;
+
+}
+
+.card {
+
+    opacity: 0;
+
+}
+
+.card.animate {
+
+    animation: fadeUp .6s ease forwards;
+
+}
+
+tbody tr{
+
+    transition:all .25s ease;
+
+}
+
+tbody tr:hover{
+
+    transform:translateX(6px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+button{
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+button:active{
+
+    transform:scale(.96);
+
+}
